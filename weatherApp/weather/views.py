@@ -2,6 +2,7 @@ from django.shortcuts import render
 import datetime
 import requests
 from django.contrib import messages
+from .helpers import  get_location, get_flag_url
 # Create your views here.
 def home(request):
     if "city" in request.POST:
@@ -19,14 +20,24 @@ def home(request):
         icon = data['weather'][0]['icon']
         temp = data['main']['temp']
 
+        longitude = data["coord"]["lon"]
+        latitude = data["coord"]["lat"]
+
+        country = get_location(latitude, longitude)
+        flag_url = get_flag_url(country)
+
         day = datetime.date.today()
 
         context = {
             "city": city,
+            "country": country,
             "description": description,
             "icon": icon,
             "temp": temp,
             "day": day,
+            "flag_url": flag_url,
+
+
             'exception_occurred': False,
         }
         return render(request, 'index.html', context)
