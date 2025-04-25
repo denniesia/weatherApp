@@ -24,7 +24,7 @@ h1{
     margin-bottom: 15px;
 }
 h2{
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 form{
   display:grid;
@@ -32,7 +32,9 @@ form{
   grid-gap:3%;
 }
 
-
+.country {
+  margin-bottom: 1rem;
+}
 .container{
   width: 50%;;
   /* background-color: #77ACF1; */

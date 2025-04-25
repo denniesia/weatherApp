@@ -2,7 +2,7 @@ from django.shortcuts import render
 import datetime
 import requests
 from django.contrib import messages
-from .helpers import  get_location, get_flag_url
+from .helpers import  get_country, get_flag_url
 # Create your views here.
 def home(request):
     if "city" in request.POST:
@@ -23,7 +23,7 @@ def home(request):
         longitude = data["coord"]["lon"]
         latitude = data["coord"]["lat"]
 
-        country = get_location(latitude, longitude)
+        country = get_country(str(latitude), str(longitude))
         flag_url = get_flag_url(country)
 
         day = datetime.date.today()

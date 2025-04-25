@@ -1,16 +1,18 @@
 import requests
-from geopy import Nominatim
+from geopy.geocoders import Nominatim
+from geopy.exc import GeocoderUnavailable
 
-def get_location(lon,lat):
+def get_country(lat, lon):
+    geolocator = Nominatim(user_agent="weatherApp", timeout=10)  # increase timeout to 10 seconds
 
-    geolocator = Nominatim(user_agent="weatherApp") #initializing geolocator, user_agent required for the OpenStreetMap 'identification policy'
+    location = geolocator.reverse((lat, lon), exactly_one=True, language="en")
 
-    try:
-        location = geolocator.reverse((lat,lon), exactly_one=True) #only one result, not a list
-        if location and 'county' in location.raw['address']:
-            country = location.raw['address']['country']
-    except KeyError:
-        country = "Unknown location"
+    if location:
+        return location.raw['address']['country']
+    else:
+        return "Unknown country"
+
+
 
 def get_country_code(country_name):
     url = f'https://restcountries.com/v3.1/name/{country_name}?fullText=true'
@@ -25,7 +27,7 @@ def get_flag_url(country_name):
     country_code = get_country_code(country_name)
 
     if country_code != "Unknown country":
-        return f"https://flagcdn.com/w320/{country_code.lower()}.png"
+        return f"https://flagcdn.com/w320/{country_code}.png"
     else:
             return None
 

@@ -27,8 +27,14 @@
 {% if not exception_occurred %}
     <div class="weather">
       <div class="left">
-        <h2 class="temp">{{ temp }}&#176; C</h2>
-        <h2 class="city">{{ city }}</h2>
+        <h2  class="temp">{{ temp }}&#176; C</h2>
+        <h2  class="city">{{ city }}</h2>
+           <p class="country" style="font-family: 'Bell MT'; margin-left: 30px;">
+               <small>
+                   Country: {{ country }} <small>{{ flag_url }}</small>
+               </small>
+           </p>
+
       </div>
       <div class="right">
         <div class="icon">
