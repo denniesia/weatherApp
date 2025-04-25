@@ -2,6 +2,8 @@
 
 Your daily forecast companion — simple, fast, and beautiful!
 
+I folllowed a Youtube Demo, however some functionalities - humidity percentage, country, country flag, and designs for them are extras
+
 ---
 
 ## 🚀 About the App
