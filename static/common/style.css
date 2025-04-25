@@ -3,7 +3,7 @@
     --white: #ffffff;
     --off-white: #e5e5e5;
     --transp-white-1: rgba(255, 255, 255, 0.25);
-    --transp-white-2: rgba(255, 255, 255, 0.18);
+    --transp-white-2: rgba(255, 255, 255, 0.32);
     --blue-1: #62b8f5;
     --blue-2: #4475ef;
     --shadow: rgba(3, 46, 87, 0.2);
@@ -18,7 +18,7 @@
 .video-background {
   position: relative;
   width: 100%;
-  height: 100vh; /* or any height you need */
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -33,7 +33,7 @@
   transform: translate(-50%, -50%);
   z-index: 0;
   object-fit: cover;
-  /*opacity: 0.8;  optional - you can adjust transparency */
+  /*opacity: 0.8;  optional -  adjust transparency */
 }
 
 h1{
@@ -55,7 +55,6 @@ form{
 }
 .container{
   width: 50%;;
-  /* background-color: #77ACF1; */
   background: var(--transp-white-2);
   backdrop-filter: blur(10px);
   margin: 5rem auto;
@@ -67,9 +66,6 @@ form{
 }
 input, .btn ::placeholder{
   background-color: transparent;
-
-    /* color: var(--off-white);
-    border-bottom: 2px solid var(--transp-white-1);   */
   padding: .5rem;
   border-radius: 10px;
   outline: none;
@@ -103,7 +99,6 @@ input, .btn ::placeholder{
 }
 .left{
   width:100%;
-  /* background-color:#343A40 ; */
   padding:.3rem;
   padding-bottom: 0;
   border-radius:10px 0 0 10px;
@@ -115,9 +110,8 @@ input, .btn ::placeholder{
 
 }
 .bottom-box-left {
-  width: 100%; /* takes full width of .weather */
+  width: 100%;
   height: 150px;
-  background: var(--transp-white-2);
   backdrop-filter: blur(10px);
   background: var(--transp-white-2);
   border-radius: 12px;
@@ -145,8 +139,8 @@ input, .btn ::placeholder{
   backdrop-filter: blur(10px);
 
 }
-.bottom-box {
-  width: 100%; /* takes full width of .weather */
+.bottom-box-right {
+  width: 100%;
   height: 150px;
   background: var(--transp-white-2);
   backdrop-filter: blur(10px);
@@ -157,60 +151,82 @@ input, .btn ::placeholder{
 }
 
 .icon{
-
-/* background:#d8c6c6; */
   height:85px;
   padding: .5rem;
   border-radius:0 10px 0 0;
   color:#04009A;
-  /* filter: drop-shadow(0 1.8em 3.7em var(--shadow)); */
 }
 .condition{
   height:135px;
-  /*background:#292929 ;
-  padding: .5rem; */
   border-radius:0 0 10px;
   color:rgb(5,41,51);
   font-size: 20px;
 }
+/* Default styles (for large screens) */
 
-@media only screen and (max-width: 1000px) {
-  .container{
-   width:80%;
+/* Medium screens (tablets & small laptops) */
+@media only screen and (max-width: 1000px) and (min-width: 701px) {
+  .container {
+    width: 80%;
+  }
+  .weather {
+    flex-direction: row;
+    height: auto;
+  }
+  form {
+    grid-template-columns: 70% 30%;
+  }
+  .right {
+    margin-left: 1rem;
+    margin-top: 0;
   }
 }
+
+
+/* Medium screens (tablets & small laptops) */
+@media only screen and (max-width: 1000px) and (min-width: 701px) {
+  .container {
+    width: 80%;
+  }
+  .weather {
+    flex-direction: row;
+    height: auto;
+  }
+  form {
+    grid-template-columns: 70% 30%;
+  }
+  .right {
+    margin-left: 1rem;
+    margin-top: 0;
+  }
+}
+
+/* Small screens (phones) */
 @media only screen and (max-width: 700px) {
   .weather {
-
-    flex-wrap: wrap;;
-    height:auto;
+    flex-wrap: wrap;
+    height: auto;
   }
-  .container{
-    text-align:center;
-    width:90%;
-    height:90%;
+  .container {
+    text-align: center;
+    width: 90%;
+    height: 90%;
   }
-  .right{
-    margin-top:.5rem;
-    margin-left:0;
+  .right {
+    margin-top: 0.5rem;
+    margin-left: 0;
   }
-  form{
-    grid-template-columns:100%;
-
+  form {
+    grid-template-columns: 100%;
   }
-
-
 }
 
-/*
 
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200'); */
+
 
 body  {
-
   background-size:cover;
   background-repeat: no-repeat;
   margin: 0;
   width: 1920px;
-
 }
