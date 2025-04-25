@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weather APP</title>
     <link rel="stylesheet" href="{% static 'common/style.css' %}">
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
@@ -13,15 +13,18 @@
     />
 </head>
 
-<body>
+<body style="background-image: url('https://images.pexels.com/photos/3008509/pexels-photo-3008509.jpeg?auto=compress&cs=tinysrgb&w=1600');">
   <div class="container">
     <h1 class="heading">Weather App</h1>
+
 
     <form method="POST">
       {% csrf_token %}
       <input type="text" name="city" placeholder="Enter City">
       <button type="submit" class="btn">Search</button>
     </form>
+
+{% if not exception_occurred %}
     <div class="weather">
       <div class="left">
         <h2 class="temp">{{ temp }}&#176; C</h2>
@@ -40,12 +43,16 @@
   </div>
 
 
-{% if exception_occurred %}
-    <script>
+{% else %}
+
+    <h3 style="margin-top:30px; text-align: center">City not found</h3>
+    <h3 style="text-align: center">Please check your spelling and try again </h3>
+     <script>
         window.onload = function() {
             alert("City information is not available to Weather API");
         }
     </script>
+
 {% endif %}
 
 </body>

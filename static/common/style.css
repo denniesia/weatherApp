@@ -17,6 +17,7 @@
   box-sizing:border-box;
   font-family: "Poppins", sans-serif;
 }
+
 h1{
     text-align: center;
     color: rgb(5,41,51);
@@ -30,6 +31,8 @@ form{
   grid-template-columns:72% 25%;
   grid-gap:3%;
 }
+
+
 .container{
   width: 50%;;
   /* background-color: #77ACF1; */
@@ -126,6 +129,8 @@ input, .btn ::placeholder{
   color:rgb(5,41,51);
   font-size: 20px;
 }
+
+
 @media only screen and (max-width: 1000px) {
   .container{
    width:80%;
