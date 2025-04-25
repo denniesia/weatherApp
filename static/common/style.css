@@ -8,14 +8,32 @@
     --blue-2: #4475ef;
     --shadow: rgba(3, 46, 87, 0.2);
   }
-/* body{
-    background: linear-gradient(270deg, var(--blue-1), var(--blue-2));
-} */
+
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
   font-family: "Poppins", sans-serif;
+}
+.video-background {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* or any height you need */
+  overflow: hidden;
+}
+
+.video-background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  object-fit: cover;
+  /*opacity: 0.8;  optional - you can adjust transparency */
 }
 
 h1{
@@ -24,7 +42,7 @@ h1{
     margin-bottom: 15px;
 }
 h2{
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 form{
   display:grid;
@@ -79,6 +97,8 @@ input, .btn ::placeholder{
   justify-content: space-between;
   align-items:center;
   height:200px;
+  display: flex;
+  justify-content: space-between;
 
 }
 .left{
@@ -93,6 +113,17 @@ input, .btn ::placeholder{
   background: var(--transp-white-2);
   backdrop-filter: blur(10px);
 
+}
+.bottom-box-left {
+  width: 100%; /* takes full width of .weather */
+  height: 150px;
+  background: var(--transp-white-2);
+  backdrop-filter: blur(10px);
+  background: var(--transp-white-2);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 2.1rem;
+  padding: 20px;
 }
 .temp{
   text-align: center;
@@ -114,6 +145,17 @@ input, .btn ::placeholder{
   backdrop-filter: blur(10px);
 
 }
+.bottom-box {
+  width: 100%; /* takes full width of .weather */
+  height: 150px;
+  background: var(--transp-white-2);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  padding: 20px;
+}
+
 .icon{
 
 /* background:#d8c6c6; */
@@ -125,13 +167,12 @@ input, .btn ::placeholder{
 }
 .condition{
   height:135px;
-      /* background:#292929 ; */
-  /* padding: .5rem; */
+  /*background:#292929 ;
+  padding: .5rem; */
   border-radius:0 0 10px;
   color:rgb(5,41,51);
   font-size: 20px;
 }
-
 
 @media only screen and (max-width: 1000px) {
   .container{
@@ -140,7 +181,8 @@ input, .btn ::placeholder{
 }
 @media only screen and (max-width: 700px) {
   .weather {
-    flex-direction:column;
+
+    flex-wrap: wrap;;
     height:auto;
   }
   .container{
@@ -165,7 +207,7 @@ input, .btn ::placeholder{
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:200'); */
 
 body  {
-  background-image: url('https://images.pexels.com/photos/3008509/pexels-photo-3008509.jpeg?auto=compress&cs=tinysrgb&w=1600');
+
   background-size:cover;
   background-repeat: no-repeat;
   margin: 0;

@@ -27,7 +27,7 @@ def get_flag_url(country_name):
     country_code = get_country_code(country_name)
 
     if country_code != "Unknown country":
-        return f"https://flagcdn.com/w320/{country_code}.png"
+        return f"https://flagcdn.com/w80/{country_code.lower()}.png"
     else:
-            return None
+        return None
 

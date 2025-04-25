@@ -11,11 +11,18 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
       rel="stylesheet"
     />
+
+
 </head>
 
-<body style="background-image: url('https://images.pexels.com/photos/3008509/pexels-photo-3008509.jpeg?auto=compress&cs=tinysrgb&w=1600');">
+<body>
+<div class="video-background">
+<video autoplay muted loop playsinline style="width: 100%; height: auto; object-fit: cover;">
+    <source src="{% static 'home/weather_video.mp4' %}" type="video/mp4" />
+</video>
+
   <div class="container">
-    <h1 class="heading">Weather App</h1>
+    <h1 class="heading">What's the weather today in ...</h1>
 
 
     <form method="POST">
@@ -29,13 +36,21 @@
       <div class="left">
         <h2  class="temp">{{ temp }}&#176; C</h2>
         <h2  class="city">{{ city }}</h2>
-           <p class="country" style="font-family: 'Bell MT'; margin-left: 30px;">
-               <small>
-                   Country: {{ country }} <small>{{ flag_url }}</small>
-               </small>
-           </p>
+           <h5 class="country" style="font-family: 'Poppins'; margin-left: 30px;text-transform: capitalize">
 
+                   Country: {{ country }}
+                   {% if flag_url %}
+                    <img src="{{ flag_url }}" alt="{{ country }} flag" style="width: 30px; height: auto; vertical-align: middle; margin-left: 5px;">
+                  {% endif %}
+
+           </h5>
+         <div class="bottom-box-left">
+            <img src="{% static 'common/feelslike.png' %}" width="60px" style="margin-left: 10rem;">
+            <p style="text-transform: capitalize; margin-left: 7rem;">Feels like: {{ feels_like }}%</p>
       </div>
+      </div>
+
+
       <div class="right">
         <div class="icon">
           <p><img src="http://openweathermap.org/img/w/{{ icon }}.png" width="120px"></p>
@@ -44,14 +59,22 @@
           <p>{{ description }}</p>
           <p>{{ day }}</p>
         </div>
+
+
+      <div class="bottom-box">
+          <img src="{% static 'common/humidity.png' %}" width="50px">
+          <p>Humidity percentage: {{ humidity }}%</p>
+
+
       </div>
     </div>
   </div>
 
 
-{% else %}
-    <h3>{{ message }}</h3>
 
+
+
+{% else %}
     <h3 style="margin-top:30px; text-align: center">City not found</h3>
     <h3 style="text-align: center">Please check your spelling and try again </h3>
      <script>
@@ -61,6 +84,6 @@
     </script>
 
 {% endif %}
-
+</div>
 </body>
 </html>
