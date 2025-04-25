@@ -31,7 +31,6 @@ def home(request):
         }
         return render(request, 'index.html', context)
     except KeyError:
-        messages.error(request, 'Entered data is not available to API')
         context = {
             'exception_occurred': True,
         }
